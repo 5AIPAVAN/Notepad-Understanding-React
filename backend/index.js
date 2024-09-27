@@ -5,7 +5,7 @@ connectToMongodB();
 
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 5000
  
 // in order to use req.body we need to include this -> to pass requests in json format
 app.use(express.json());
