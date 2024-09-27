@@ -1,9 +1,13 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import noteContext from '../context/notes/noteContext'
 
-export default function About() {
+export default function About() { 
+
+  const teststate = useContext(noteContext);
+
   return (
     <div>
-      About page
+      Details that came from contextApi - name:{teststate.name} and team:{teststate.team}
     </div>
   )
 }
