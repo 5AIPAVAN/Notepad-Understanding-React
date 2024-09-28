@@ -1,3 +1,12 @@
 # /node_modules in .gitignore file -> will only ignore node_modules in current directory(means '/')
 -> if we want to avoid all node_modules(even in backend and other folders if there)
 -> we need to update it to "node_modules" insted of "/node_modules"
+
+
+# Cors-Cross Origin Resource Sharing 
+must be used to mention the backend -> from which url or addresses you can accept requests
+
+
+# e.preventDefault() blocks the default nature of selected component
+-> for example on click a button refreshes the page 
+-> in order to prevent this behaviour you can use preventDefault
