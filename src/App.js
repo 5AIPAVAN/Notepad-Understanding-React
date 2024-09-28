@@ -5,12 +5,14 @@ import Navbar from './components/Navbar';
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NoteState from './context/notes/NoteState';
+import Alert from './components/Alert';
 function App() {
   return (
     <>
     <NoteState>
     <BrowserRouter>
     <Navbar />
+    <Alert/>
     <div className="container">
     <Routes>
       <Route path="/" element={<Home />} />
