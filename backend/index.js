@@ -3,9 +3,14 @@ const connectToMongodB = require('./db');
 connectToMongodB();
 
 
-const express = require('express')
-const app = express()
-const port = 5000
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const port = 5000;
+
+
+// Enable CORS for localhost:3000
+app.use(cors({ origin: 'http://localhost:3000' }));
  
 // in order to use req.body we need to include this -> to pass requests in json format
 app.use(express.json());
