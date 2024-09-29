@@ -15,6 +15,7 @@ export default function AddNote() {
     const handleSubmit=(e)=>{
         e.preventDefault(); // prevents the default nature of the button -> i.e page refresh
         contextt.addNote(notee.title,notee.description,notee.tags);
+        contextt.showAlert("success","Note added successfully bhai !!!!")
         setNotee({title:'',description:'',tags:''});
     }
 

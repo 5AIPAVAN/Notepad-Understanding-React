@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import noteContext from '../context/notes/noteContext';
 
 export default function Login() {
 
+    const dataa = useContext(noteContext);
+    const {showAlert} = dataa;
     const host = "http://localhost:5000";
     const [details, setDetails] = useState({ email: "", password: "" });
     const navigate = useNavigate();
@@ -30,6 +33,7 @@ export default function Login() {
         localStorage.setItem('token',response_received.authtoken);
         const token = localStorage.getItem('token');
         console.log(token);
+        showAlert("success","Login success he bhaiiii");
         navigate('/')   
      }else{
         alert('Incorrect Credentials');

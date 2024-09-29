@@ -6,6 +6,14 @@ export default function NoteState(props) {
 
   const host = "http://localhost:5000";
 
+  const [alert,setAlert]=useState({type:"",msg:""});
+  const showAlert = (type,msg)=>{
+    setAlert({type:type,msg:msg});
+    setTimeout(()=>{
+      setAlert({type:"",msg:""});
+    },4000);
+  }
+
   let notesInitial = [
     {
       "_id": "66f442af7925690a54cb5876",
@@ -186,7 +194,7 @@ export default function NoteState(props) {
   }
 
   return (
-    <NoteContext.Provider value={{ addNote, notes, UpdateNote, deleteNote , getNotes }}>
+    <NoteContext.Provider value={{ addNote, notes, UpdateNote, deleteNote , getNotes,alert,showAlert }}>
       {props.children}
     </NoteContext.Provider>
   )

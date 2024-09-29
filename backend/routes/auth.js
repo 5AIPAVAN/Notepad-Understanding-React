@@ -17,13 +17,13 @@ router.post('/createuser', [
     // If there are errors in validation, return Bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success:false,errors: errors.array() });
     }
     // Check whether the user with this email exists already
     try {
       let user = await User.findOne({ email: req.body.email });
       if (user) {
-        return res.status(400).json({ error: "Sorry a user with this email already exists" })
+        return res.status(400).json({ success:false,error: "Sorry a user with this email already exists" })
       }
 
       // generate hashes password
@@ -44,7 +44,7 @@ router.post('/createuser', [
       const authtoken = jwt.sign(data, JWT_SECRET);
       
       // res.json(user)
-      res.json({authtoken})
+      res.json({success:true,authtoken})
   
     } catch (error) {
       console.error(error.message);

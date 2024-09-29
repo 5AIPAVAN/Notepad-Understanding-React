@@ -1,13 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link,useLocation } from 'react-router-dom'
+import Alert from './Alert'
+import noteContext from '../context/notes/noteContext';
 
 export default function Navbar() {
 
   let location = useLocation();
 
+  const dataa = useContext(noteContext);
+  const {alert} = dataa;
+
   // runs only when location value is chnaged
   useEffect(()=>{
     console.log(location.pathname)
+
   },[location]);
 
   return (
@@ -36,6 +42,7 @@ export default function Navbar() {
     </div>
   </div>
 </nav>
+{alert.msg!=="" && <Alert/>}
     </>
   )
 }

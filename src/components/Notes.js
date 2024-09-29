@@ -3,7 +3,7 @@ import noteContext from '../context/notes/noteContext'
 import NoteItem from './NoteItem';
 export default function Notes() {
     let context = useContext(noteContext);
-    let {getNotes,notes,UpdateNote} = context;
+    let {getNotes,notes,UpdateNote,showAlert} = context;
     const ref = useRef(null);
     const closeref = useRef(null);
 
@@ -24,6 +24,7 @@ export default function Notes() {
     const handleSubmit=(e)=>{
         e.preventDefault(); // prevents the default nature of the button -> i.e page refresh
         UpdateNote(note.id,note.etitle,note.edescription,note.etags);
+        showAlert("success","Note updated successfully");
         console.log('updateddd');
         setNote({id:'',etitle:'',edescription:'',etags:''});
         closeref.current.click();
