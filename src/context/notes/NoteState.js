@@ -141,7 +141,7 @@ export default function NoteState(props) {
 
   const UpdateNote = async (id, title, description, tag) => {
 
-    const response = await fetch(`${host}/api/notes/updatenote/66f442af7925690a54cb5876`, {
+    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -150,16 +150,21 @@ export default function NoteState(props) {
       body: JSON.stringify({ title, description, tag })
     })
 
-    const data_udpated = response.json();
+    const data_udpated = await response.json();
+
+    let newNotes = JSON.parse(JSON.stringify(notes));
 
     for (let i = 0; i < notes.length; i++) {
       const element = notes[i];
       if (element._id === id) {
-        element.title = title;
-        element.description = description;
-        element.tag = tag;
+        newNotes[i].title = title;
+        newNotes[i].description = description;
+        newNotes[i].tag = tag;
       }
     }
+
+    setNotes(newNotes);
+    
     console.log(`element of id ${id} updated`);
   }
 

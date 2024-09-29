@@ -10,3 +10,13 @@ must be used to mention the backend -> from which url or addresses you can accep
 # e.preventDefault() blocks the default nature of selected component
 -> for example on click a button refreshes the page 
 -> in order to prevent this behaviour you can use preventDefault
+
+
+# place edit model in parent component
+-> make launch demo model display none
+-> use useRef's to manage clicks of toggle(hidden launch demo button)
+-> and pass update function to toggle button(launch demo button) and get details of that particular note
+as a prop to each child note
+
+-> final setup -> function to update and model code in parent component and just fucntion call is done
+from child component as we have passed this function to each child as a prop.
