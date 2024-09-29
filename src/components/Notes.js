@@ -77,7 +77,7 @@ export default function Notes() {
         </div>
         <div className='row my-3'>
             <h3>Your Notes</h3>
-            <div className="container"> minLength={5} required
+            <div className="container">
             {notes.length===0 && 'No Notes To Display'}
             </div>
             {

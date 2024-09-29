@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from 'react'
-import { Link,useLocation } from 'react-router-dom'
+import { Link,useLocation, useNavigate } from 'react-router-dom'
 import Alert from './Alert'
 import noteContext from '../context/notes/noteContext';
 
 export default function Navbar() {
 
   let location = useLocation();
+  const navigate = useNavigate();
 
   const dataa = useContext(noteContext);
   const {alert} = dataa;
@@ -15,6 +16,11 @@ export default function Navbar() {
     console.log(location.pathname)
 
   },[location]);
+
+  const handleLogout = ()=>{
+    localStorage.removeItem("token");
+    navigate('/login');
+  }
 
   return (
     <>
@@ -34,10 +40,10 @@ export default function Navbar() {
         </li>
      </ul>
 
-     <div>
+     {!localStorage.getItem('token') ? <div>
      <Link to="/login" type="button" class="btn btn-primary mx-2">Login</Link>
      <Link to="/signup" type="button" class="btn btn-primary mx-2">Signup</Link>
-     </div>
+     </div> :  <Link to="/login" type="button" onClick={handleLogout} class="btn btn-primary mx-2">Log out</Link>}
 
     </div>
   </div>
