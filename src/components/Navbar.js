@@ -28,6 +28,11 @@ export default function Navbar() {
         </li>
      </ul>
 
+     <div>
+     <Link to="/login" type="button" class="btn btn-primary mx-2">Login</Link>
+     <Link to="/signup" type="button" class="btn btn-primary mx-2">Signup</Link>
+     </div>
+
     </div>
   </div>
 </nav>

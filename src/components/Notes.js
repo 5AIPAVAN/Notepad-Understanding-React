@@ -8,7 +8,6 @@ export default function Notes() {
     const closeref = useRef(null);
 
     useEffect(()=>{
-    
         getNotes();
     },[]);
 
@@ -56,11 +55,11 @@ export default function Notes() {
               <form >
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
-                    <input type="text" className="form-control" name="etitle" value={note.etitle} id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handleChange} />
+                    <input type="text" className="form-control" name="etitle" value={note.etitle} id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handleChange}  minLength={5} required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label">Description</label>
-                    <input type="text" className="form-control" name="edescription" value={note.edescription} id="exampleInputPassword1" onChange={handleChange}  />
+                    <input type="text" className="form-control" name="edescription" value={note.edescription} id="exampleInputPassword1" onChange={handleChange} minLength={5} required  />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="tags" className="form-label">Tags</label>
@@ -70,13 +69,16 @@ export default function Notes() {
               </div>
               <div className="modal-footer">
                 <button type="button" ref={closeref} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" onClick={handleSubmit} className="btn btn-primary">Save changes</button>
+                <button  disabled={note.etitle.length<3 || note.edescription.length<5}  type="button" onClick={handleSubmit} className="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
         </div>
         <div className='row my-3'>
             <h3>Your Notes</h3>
+            <div className="container"> minLength={5} required
+            {notes.length===0 && 'No Notes To Display'}
+            </div>
             {
                 notes.map((note) => 
                     {

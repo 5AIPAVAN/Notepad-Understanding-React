@@ -36,7 +36,7 @@ export default function AddNote() {
                     <input type="text" className="form-control" name="tags" value={notee.tags} id="exampleInputPassword1" onChange={handleChange}  />
                 </div>
 
-                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
+                <button disabled={notee.title.length<3 || notee.description.length<5} type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
             </form>
 
             <Notes />

@@ -120,22 +120,12 @@ export default function NoteState(props) {
       body: JSON.stringify({ title, description, tag })
     })
 
-    const data_updatedd = response.json();
-    console.log(data_updatedd);
+    const added_note = await response.json();
+    console.log('added',added_note);
 
-    // client side
+    // client side update
 
-    const newNote = {
-      "_id": "66f442c67925690a54cb58782777",
-      "user": "66f426486934a2fc99ccd77f",
-      "title": title,
-      "description": description,
-      "tag": tag,
-      "date": "2024-09-25T17:05:10.915Z",
-      "__v": 0
-    }
-
-    setNotes(notes.concat(newNote));
+    setNotes(notes.concat(added_note));
   }
 
 
@@ -152,6 +142,10 @@ export default function NoteState(props) {
 
     const data_udpated = await response.json();
 
+    // we need to create this to edit state -> we cannot directly update notes
+    // make changes to this
+    // set this as new state
+
     let newNotes = JSON.parse(JSON.stringify(notes));
 
     for (let i = 0; i < notes.length; i++) {
@@ -160,11 +154,12 @@ export default function NoteState(props) {
         newNotes[i].title = title;
         newNotes[i].description = description;
         newNotes[i].tag = tag;
+        break;
       }
     }
 
     setNotes(newNotes);
-    
+
     console.log(`element of id ${id} updated`);
   }
 
@@ -181,7 +176,7 @@ export default function NoteState(props) {
       }
     })
 
-    const data_updateddd = response.json();
+    const data_updateddd = await response.json();
     console.log(data_updateddd);
 
     const updatednotes = notes.filter((note) => {
