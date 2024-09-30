@@ -81,7 +81,7 @@ export default function Notes() {
             {notes.length===0 && 'No Notes To Display'}
             </div>
             {
-                notes.map((note) => 
+                notes.length!==0 && notes.map((note) => 
                     {
                         return <NoteItem key={note._id} updateNote={updateNote} note={note}/>
                     })

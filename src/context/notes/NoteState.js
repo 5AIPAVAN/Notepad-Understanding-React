@@ -93,6 +93,7 @@ export default function NoteState(props) {
   // declare what ever normal variables,functions,state variables here 
   // you can you whatever decalred here by using this context (donot forget to mention in value={} to use)
 
+  const [allnotes,setAllNotes] = useState([]);
 
   //get all notes
 
@@ -193,8 +194,27 @@ export default function NoteState(props) {
     setNotes(updatednotes);
   }
 
+  const getAllNotes = async()=>{
+
+       // Api call to get all notes from database
+
+       const response = await fetch(`${host}/api/notes/allnotes`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token': localStorage.getItem('token')
+        },
+      })
+  
+      // await is important here -> if not error 
+      const allnotes = await response.json();
+      
+      setAllNotes(allnotes);
+
+  }
+
   return (
-    <NoteContext.Provider value={{ addNote, notes, UpdateNote, deleteNote , getNotes,alert,showAlert }}>
+    <NoteContext.Provider value={{ addNote, notes, UpdateNote, deleteNote , getNotes,alert,showAlert, allnotes, setAllNotes , getAllNotes }}>
       {props.children}
     </NoteContext.Provider>
   )
