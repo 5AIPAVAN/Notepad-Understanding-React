@@ -32,6 +32,10 @@ export default function AllNotes() {
     (item.title.toLowerCase().includes(search.toLowerCase()) || item.description.toLowerCase().includes(search.toLowerCase()) || item.tag.toLowerCase().includes(search.toLowerCase()) )
   );
 
+  // check how noteRefs store values of dom inside it 
+  useEffect(()=>console.log(noteRefs),[noteRefs]);
+
+ 
 
     return (
         <div className='row my-3'>
@@ -46,9 +50,9 @@ export default function AllNotes() {
                   {/* ID List for Clicking */}
                   <div className="container my-3 ">
                 <h4>Click on a Note ID to Scroll to the Note</h4>
-                <ul className="d-flex my-5">
+                <ul className="d-flex my-5 flex-wrap">
                     {filteredData.map((note) => (
-                        <div key={note._id}  className='mx-3'>
+                        <div key={note._id}  className='mx-3 my-3'>
                             <button className="btn btn-primary"  type="button" onClick={() => handleScrollToNote(note._id)}>
                                 {note._id.substring(note._id.length-2,note._id.length)}
                             </button>

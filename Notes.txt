@@ -20,3 +20,30 @@ as a prop to each child note
 
 -> final setup -> function to update and model code in parent component and just fucntion call is done
 from child component as we have passed this function to each child as a prop.
+
+# scroll to note fucnction :-
+
+-> pass ref to each note while iterating in map funciton -> with some unique ref to each note
+-> here we have done like this he syntax noteRef={(el) => noteRefs.current[note._id] = el} 
+   is used to dynamically assign a ref to a specific DOM element for each note,
+   allowing you to access and manipulate the DOM nodes directly in React functional components.
+-> The syntax (el) => noteRefs.current[note._id] = el is a callback ref. It takes the DOM element (el) rendered by the component
+   and stores it in the noteRefs.current object with the key as the note’s unique _id.
+-> el refers to the actual DOM element
+->For example, if the note has an _id of 123,
+ then the corresponding DOM element will be stored as noteRefs.current['123'].
+ -> this is how they are stored 
+ 
+ -> (note's id --- DOM of that note)
+ current
+: 
+66f83b1db7bd5ca582ec0993: div.col-md-3
+66f988e43b5cf95c453d991c: div.col-md-3 and soo onnnnn.....
+
+-> note's id and corresponding DOM element of that note is stored in noteRefs object
+
+
+
+
+
+
